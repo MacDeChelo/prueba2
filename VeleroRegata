@@ -1,0 +1,29 @@
+package veleromain;
+
+public class VeleroRegata extends Datos implements Promociones {
+    private String marca;
+    private String modelo;
+    private double slora;
+    private String tipoRegata;
+    
+    public VeleroRegata(String codigo, String nombre, double precioBase, String marca, String modelo, double slora, String tipoRegata){
+       super(codigo, nombre, precioBase);
+       this.marca = marca;
+       this.modelo = modelo;
+       this.slora = slora;
+       this.tipoRegata = tipoRegata;    
+    }
+    
+    public void ajustePrecio(){
+        
+    }
+    
+    public double precioFinal(){
+        double incremento = (slora > 40) ? 500000: 0;
+        return getPrecioBase() + incremento - descuento_deNavidad();
+    }
+    @Override
+    public double descuento_deNavidad(){
+        return calcularDescuentoNavidad(marca , DTO_NAVIDAD);
+    }
+}
