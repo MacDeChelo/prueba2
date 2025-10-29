@@ -1,0 +1,41 @@
+
+package velerosformah;
+
+
+public class VeleroCrucero extends Datos implements Promociones {
+    private String marca;
+    private String modelo;
+    private int anioFabricacion;
+    private String tipoCrucero;
+
+    public VeleroCrucero(String codigo, String nombre, double precioBase, String marca, String modelo, int anioFabricacion, String tipoCrucero) {
+        super(codigo, nombre, precioBase);
+        this.marca = marca;
+        this.modelo = modelo;
+        this.anioFabricacion = anioFabricacion;
+        this.tipoCrucero = tipoCrucero;
+    }
+
+    public void ajustePrecio() {
+        if (anioFabricacion == 2023) {
+            setPrecioBase(getPrecioBase() * (1 - 0.125));
+        }
+    }
+
+    public double precioFinal() {
+        return getPrecioBase() - descuento_deNavidad();
+    }
+
+    @Override
+    public double descuento_deNavidad() {
+        return calcularDescuentoNavidad(marca, DTO_NAVIDAD);
+    }
+
+    public String getMarca() {
+        return marca;
+    }
+
+    public String getTipoCrucero() {
+        return tipoCrucero;
+    }
+}
