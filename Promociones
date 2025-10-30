@@ -1,0 +1,6 @@
+package veleromain;
+
+public interface Promociones {
+    double DTO_NAVIDAD = 0.085;
+    double descuento_deNavidad();
+}
